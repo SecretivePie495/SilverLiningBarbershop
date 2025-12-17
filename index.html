@@ -80,7 +80,7 @@ a,
 /* Focus state style for keyboard navigation for the focusable elements */
 *[tabindex]:focus-visible,
   input[type="file"]:focus-visible {
-   outline: 0.125rem solid #4d65ff;
+   outline: 0.125rem solid #c0c0c0;
    outline-offset: 0.125rem;
 }
 
@@ -477,6 +477,7 @@ if (Webflow.env("editor") === undefined) {
   }
   requestAnimationFrame(raf);
 }
+
 $("[data-lenis-start]").on("click", function () {
   lenis.start();
 });
@@ -490,7 +491,43 @@ $("[data-lenis-toggle]").on("click", function () {
   } else {
     lenis.start();
   }
-
-	
 });
-</script></body></html>
+</script>
+
+<style>
+  /* SILVER focus outline */
+  *[tabindex]:focus-visible,
+  input[type="file"]:focus-visible {
+    outline: 0.125rem solid #c0c0c0;
+    outline-offset: 0.125rem;
+  }
+
+  /* GOLD + SILVER accents */
+  :root {
+    --accent-gold: #d4af37;
+    --accent-silver: #c0c0c0;
+  }
+
+  /* GOLD primary buttons */
+  .button,
+  .w-button {
+    background-color: var(--accent-gold) !important;
+    border-color: var(--accent-gold) !important;
+    color: #111 !important;
+  }
+
+  /* SILVER outlined buttons */
+  .button.is-outlined {
+    background-color: transparent !important;
+    border-color: var(--accent-silver) !important;
+    color: var(--accent-silver) !important;
+  }
+
+  /* GOLD link hover */
+  a:hover {
+    color: var(--accent-gold) !important;
+  }
+</style>
+
+</body>
+</html>
