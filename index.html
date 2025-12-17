@@ -5,7 +5,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- ✅ BRAND + SEO (FIXED from SOTA Studio Toronto) -->
+  <!-- ✅ BRAND + SEO -->
   <title>Silver Lining Barbershop | Dallas Men’s Haircuts & Beard Grooming</title>
   <meta name="description" content="Silver Lining Barbershop in Dallas — clean cuts, chill vibes, fair prices. Book online for haircuts, fades, and beard grooming." />
 
@@ -46,7 +46,7 @@
     }(document,{brand:"8a7f8215-3dca-49c6-9afd-6f23eb6a744d",inline:true});
   </script>
 
-  <!-- ✅ Keep ONE font quality block (removed duplicate) -->
+  <!-- Font quality -->
   <style>
     * {
       -webkit-font-smoothing: antialiased;
@@ -69,7 +69,7 @@
     body { opacity: 0; }
   </style>
 
-  <!-- Lenis base styles (kept) -->
+  <!-- Lenis base styles -->
   <style>
     html.lenis { height: auto; }
     .lenis.lenis-smooth { scroll-behavior: auto; }
@@ -77,21 +77,23 @@
     .lenis.lenis-stopped { overflow: hidden; }
   </style>
 
-  <!-- ✅ GLOBAL COLOR SYSTEM (CLEAN + CONSISTENT) -->
+  <!-- ✅ GLOBAL COLORS + SURFACES (FIXED: removes the dark gray “overlay” look) -->
   <style>
     :root {
-      /* Premium dark base */
+      /* Light premium base */
       --color-scheme-1--background: #fcfdff;
-      --color-scheme-1--foreground: #151a20;
-      --color-scheme-1--text: #000000;
-      --color-scheme-1--border: #000000;
+      --color-scheme-1--foreground: rgba(255,255,255,0.92); /* cards/panels */
+      --color-scheme-1--text: #0b0f14;
+      --color-scheme-1--border: rgba(0,0,0,0.08);
 
       /* Luxury accent */
       --color-scheme-1--accent: #d4af37; /* GOLD */
     }
 
-    /* Ensure background is truly global */
-    html, body { background: var(--color-scheme-1--background) !important; color: var(--color-scheme-1--text) !important; }
+    html, body {
+      background: var(--color-scheme-1--background) !important;
+      color: var(--color-scheme-1--text) !important;
+    }
 
     /* Buttons */
     .button, .w-button {
@@ -101,7 +103,7 @@
     }
     .button.is-outlined {
       background: transparent !important;
-      border-color: rgba(245,245,245,0.55) !important;
+      border: 1px solid rgba(0,0,0,0.18) !important;
       color: var(--color-scheme-1--text) !important;
     }
     a:hover { color: var(--color-scheme-1--accent) !important; }
@@ -113,21 +115,40 @@
       outline-offset: 0.125rem;
     }
 
-    /* Make section surfaces slightly elevated (nice depth) */
+    /* Clean, light “card” surfaces across site (THIS removes the gray overlay feel) */
     .section_services .table_component,
     .testimonial15_component,
     .faq8_component,
     .section-video .video-section {
-      background: rgba(21,26,32,0.35);
-      border: 1px solid rgba(255,255,255,0.10);
+      background: var(--color-scheme-1--foreground) !important;
+      border: 1px solid var(--color-scheme-1--border) !important;
       border-radius: 16px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.06);
     }
 
-    /* Subtle spacing polish for small screens */
+    /* Make the slider arrows (left/right) invisible if they exist */
+    #reviews .w-slider-arrow-left,
+    #reviews .w-slider-arrow-right {
+      display: none !important;
+    }
+
+    /* Pricing row hover overlay (subtle + light) */
+    .table_row-hover-overlay {
+      background-color: rgba(0, 0, 0, 0.03) !important;
+    }
+
+    /* Responsive spacing polish */
     @media (max-width: 767px) {
       .padding-section-large { padding-top: 3.5rem !important; padding-bottom: 3.5rem !important; }
     }
-    
+
+    /* Utility: consistent local cards we control (used in Contact section) */
+    .sl-card{
+      background: var(--color-scheme-1--foreground) !important;
+      border: 1px solid var(--color-scheme-1--border) !important;
+      border-radius: 16px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+    }
   </style>
 
   <!-- jQuery (needed for your existing $ handlers) -->
@@ -141,7 +162,7 @@
 </head>
 
 <body>
-  <!-- ✅ Elfsight div moved into body (valid HTML) -->
+  <!-- Elfsight widget (valid placement) -->
   <div class="elfsight-app-c265472f-946d-42ef-8b6c-324c2c1a6b43" data-elfsight-app-lazy></div>
 
   <div class="page-wrapper">
@@ -223,16 +244,17 @@
         </div>
       </header>
 
-      <!-- REVIEWS (kept your slider markup) -->
+      <!-- REVIEWS -->
       <section id="reviews" class="section_testimonial15">
         <div class="padding-global">
           <div class="container-large">
             <div class="padding-section-large">
               <div class="testimonial15_component">
-                <div data-delay="4000" data-animation="slide" class="testimonial15_slider w-slider" data-autoplay="true" data-easing="ease" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="3" data-infinite="true">
+                <div data-delay="4000" data-animation="slide" class="testimonial15_slider w-slider"
+                  data-autoplay="true" data-easing="ease" data-hide-arrows="true"
+                  data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="3" data-infinite="true">
                   <div class="testimonial15_mask w-slider-mask">
 
-                    <!-- Slide 1 -->
                     <div class="testimonial15_slide w-slide">
                       <div class="w-layout-grid testimonial15_slide-content">
                         <div class="testimonial15_client-image-wrapper">
@@ -254,7 +276,6 @@
                       </div>
                     </div>
 
-                    <!-- Slide 2 -->
                     <div class="testimonial15_slide w-slide">
                       <div class="w-layout-grid testimonial15_slide-content">
                         <div class="testimonial15_client-image-wrapper">
@@ -276,7 +297,6 @@
                       </div>
                     </div>
 
-                    <!-- Slide 3 -->
                     <div class="testimonial15_slide w-slide">
                       <div class="w-layout-grid testimonial15_slide-content">
                         <div class="testimonial15_client-image-wrapper">
@@ -308,7 +328,7 @@
         </div>
       </section>
 
-      <!-- PRICING (kept your table) -->
+      <!-- PRICING -->
       <section id="pricing" class="section_services">
         <div class="padding-global">
           <div class="container-large">
@@ -466,7 +486,7 @@
         </div>
       </section>
 
-      <!-- VIDEO (kept) -->
+      <!-- VIDEO -->
       <header class="section-video">
         <div class="padding-global">
           <div class="container-large">
@@ -491,14 +511,13 @@
         </div>
       </header>
 
-      <!-- ✅ LOCATION / CONTACT (added so “Directions” works + boosts trust) -->
+      <!-- LOCATION / CONTACT -->
       <section id="contact">
         <div class="padding-global">
           <div class="container-large">
             <div class="padding-section-large">
               <div style="display:grid;grid-template-columns:1.2fr 1fr;gap:24px;align-items:start;">
-                <div style="background:rgba(21,26,32,0.35);border:1px solid rgba(255,255,255,0.10);border-radius:16px;overflow:hidden;">
-                  <!-- Replace the src with your exact Google Maps embed when ready -->
+                <div class="sl-card" style="overflow:hidden;">
                   <iframe
                     title="Silver Lining Barbershop Location"
                     src="https://www.google.com/maps?q=Dallas%20TX&output=embed"
@@ -509,7 +528,7 @@
                     referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
 
-                <div style="background:rgba(21,26,32,0.35);border:1px solid rgba(255,255,255,0.10);border-radius:16px;padding:20px;">
+                <div class="sl-card" style="padding:20px;">
                   <h2 style="margin:0 0 8px 0;">Location & Hours</h2>
                   <p style="opacity:.9;margin:0 0 14px 0;">Visit us in Dallas — easy booking, easy parking, clean results.</p>
 
@@ -541,8 +560,8 @@
         </div>
       </section>
 
-      <!-- ✅ FOOTER (added) -->
-      <footer style="margin-top:24px;border-top:1px solid rgba(255,255,255,0.12);">
+      <!-- FOOTER -->
+      <footer style="margin-top:24px;border-top:1px solid rgba(0,0,0,0.10);">
         <div class="padding-global">
           <div class="container-large">
             <div style="padding:32px 0;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:24px;">
@@ -591,7 +610,7 @@
     </main>
   </div>
 
-  <!-- ✅ Mobile CTA bar (boosts bookings on phones) -->
+  <!-- Mobile CTA bar -->
   <style>
     .mobile-cta {
       position: fixed;
@@ -603,8 +622,9 @@
       gap: 10px;
       padding: 10px;
       border-radius: 16px;
-      background: rgba(21,26,32,0.85);
-      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(0,0,0,0.10);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.10);
       backdrop-filter: blur(10px);
     }
     .mobile-cta a {
@@ -620,8 +640,9 @@
       color: #111;
     }
     .mobile-cta .cta-directions {
-      border: 1px solid rgba(245,245,245,0.55);
+      border: 1px solid rgba(0,0,0,0.18);
       color: var(--color-scheme-1--text);
+      background: transparent;
     }
     @media (max-width: 767px) {
       .mobile-cta { display: flex; }
@@ -638,7 +659,7 @@
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 
-  <!-- ✅ LENIS SMOOTH SCROLL (kept + cleaned) -->
+  <!-- LENIS SMOOTH SCROLL -->
   <script>
     let lenis;
     if (typeof Webflow === "undefined" || Webflow.env("editor") === undefined) {
@@ -665,5 +686,6 @@
       else lenis.start();
     });
   </script>
+
 </body>
 </html>
