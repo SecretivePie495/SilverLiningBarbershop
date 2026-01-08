@@ -219,6 +219,72 @@
 
   <!-- ✅ MOBILE + TYPOGRAPHY FIXES (Hero, Pricing, Footer, Skincare) -->
   <style>
+
+  /* ✅ Pricing: desktop/tablet uses table, mobile uses card grid */
+.sl-pricing-mobile{ display:none; }
+
+@media (max-width: 767px){
+  .sl-pricing-desktop{ display:none !important; }
+  .sl-pricing-mobile{ display:grid !important; }
+
+  .sl-pricing-mobile{
+    grid-template-columns: repeat(2, minmax(0,1fr));
+    gap: 12px;
+  }
+
+  .sl-price-card{
+    background: rgba(255,255,255,0.96);
+    border: 1px solid rgba(0,0,0,0.12);
+    border-radius: 16px;
+    padding: 14px;
+    box-shadow: 0 10px 24px rgba(0,0,0,0.06);
+  }
+
+  .sl-price-top{
+    display:flex;
+    align-items:flex-start;
+    justify-content:space-between;
+    gap: 10px;
+  }
+
+  .sl-price-name{
+    font-weight: 850;
+    color: var(--sl-text);
+    font-size: 15px;
+    line-height: 1.15;
+  }
+
+  .sl-price-pill{
+    font-weight: 800;
+    font-size: 12px;
+    padding: 7px 10px;
+    border-radius: 999px;
+    background: rgba(15,15,15,0.08);
+    color: var(--sl-text);
+    white-space: nowrap;
+  }
+
+  .sl-price-meta{
+    margin-top: 10px;
+    font-size: 13px;
+    color: rgba(15,15,15,0.68);
+    line-height: 1.3;
+  }
+
+  .sl-price-cta{
+    grid-column: 1 / -1;
+    margin-top: 8px;
+    text-align:center;
+  }
+}
+
+@media (max-width: 380px){
+  .sl-pricing-mobile{
+    grid-template-columns: 1fr;
+  }
+}
+
+
     /* NAV: make top "Book now" smaller + consistent on mobile */
     @media (max-width: 767px){
       .button.is-nav.w-button{
@@ -292,70 +358,6 @@
         overflow: hidden;
       }
     }
-
-    /* PRICING: convert table to stacked cards on mobile */
-    @media (max-width: 767px){
-      .section_services .table_head{ display:none !important; }
-
-      .section_services .table_row{
-        border: 1px solid rgba(0,0,0,0.12) !important;
-        border-radius: 16px !important;
-        background: rgba(255,255,255,0.96) !important;
-        margin-bottom: 12px;
-        overflow:hidden;
-        position: relative;
-      }
-
-      .section_services .table_row-inner{
-        display:flex !important;
-        flex-direction: column !important;
-        gap: 10px !important;
-        padding: 14px 14px !important;
-      }
-
-      .section_services .table_row-head{
-        font-size: 16px !important;
-        font-weight: 800 !important;
-        line-height: 1.2;
-      }
-
-      .section_services .table_row-text.is-desktop{
-        display:block !important;
-        margin-top: 6px;
-        opacity: .86;
-        line-height: 1.5 !important;
-      }
-
-      .section_services .table_cell{
-        width: 100% !important;
-      }
-
-      .section_services .table_cell:nth-child(2),
-      .section_services .table_cell:nth-child(3){
-        display:inline-flex !important;
-        align-items:center;
-        justify-content: space-between;
-        gap: 10px;
-      }
-
-      .section_services .table_cell:nth-child(2) .table_row-text::before{
-        content:"Time";
-        font-weight:700;
-        opacity:.7;
-        margin-right: 10px;
-        color: var(--sl-text);
-      }
-      .section_services .table_cell:nth-child(3) .table_row-text::before{
-        content:"Price";
-        font-weight:700;
-        opacity:.7;
-        margin-right: 10px;
-        color: var(--sl-text);
-      }
-
-      .section_services .table_row-hover-overlay{ display:none !important; }
-    }
-
     /* SKINCARE: responsive grid */
     #skincare .sl-skin-grid{
       display:grid;
@@ -418,7 +420,6 @@
           <nav role="navigation" class="navbar2_menu is-page-height-tablet w-nav-menu">
             <a href="#pricing" class="navbar2_link nav w-nav-link">Pricing</a>
             <a href="#reviews" class="navbar2_link nav w-nav-link">Reviews</a>
-            <a href="#team" class="navbar2_link nav w-nav-link">Team</a>
             <a href="#faq" class="navbar2_link nav w-nav-link">FAQ</a>
             <a href="#contact" class="navbar2_link nav w-nav-link">Location</a>
           </nav>
@@ -597,107 +598,143 @@
                     </div>
 
                     <div class="table_body">
-                      <div>
-                        <div class="table_row">
-                          <div class="table_row-inner">
-                            <div class="table_cell-wide">
-                              <div class="table_row-head">Haircut + Beard (Julian)</div>
-                              <p class="table_row-text is-desktop">Precision haircut + detailed beard work.</p>
-                            </div>
-                            <div class="table_cell"><p class="table_row-text hide-mobile-landscape">1h</p></div>
-                            <div class="table_cell"><p class="table_row-text">From $100</p></div>
-                          </div>
-                          <div class="table_row-hover-overlay"></div>
-                        </div>
 
-                        <div class="table_row">
-                          <div class="table_row-inner">
-                            <div class="table_cell-wide">
-                              <div class="table_row-head">Silver Lining Exclusive (Julian)</div>
-                              <p class="table_row-text is-desktop">Full premium session — haircut + grooming details.</p>
-                            </div>
-                            <div class="table_cell"><p class="table_row-text hide-mobile-landscape">2h</p></div>
-                            <div class="table_cell"><p class="table_row-text">From $200</p></div>
-                          </div>
-                          <div class="table_row-hover-overlay"></div>
-                        </div>
-
-                        <div class="table_row">
-                          <div class="table_row-inner">
-                            <div class="table_cell-wide">
-                              <div class="table_row-head">Haircut (Julian)</div>
-                              <p class="table_row-text is-desktop">Clean fade, taper, or classic cut — tailored to you.</p>
-                            </div>
-                            <div class="table_cell"><p class="table_row-text hide-mobile-landscape">1h</p></div>
-                            <div class="table_cell"><p class="table_row-text">From $80</p></div>
-                          </div>
-                          <div class="table_row-hover-overlay"></div>
-                        </div>
-
-                        <div class="table_row">
-                          <div class="table_row-inner">
-                            <div class="table_cell-wide">
-                              <div class="table_row-head">Beard Only (Julian)</div>
-                              <p class="table_row-text is-desktop">Shape, trim, line-up, and finish.</p>
-                            </div>
-                            <div class="table_cell"><p class="table_row-text hide-mobile-landscape">30m</p></div>
-                            <div class="table_cell"><p class="table_row-text">From $40</p></div>
-                          </div>
-                          <div class="table_row-hover-overlay"></div>
-                        </div>
-
-                        <div class="table_row">
-                          <div class="table_row-inner">
-                            <div class="table_cell-wide">
-                              <div class="table_row-head">Beard Trim</div>
-                              <p class="table_row-text is-desktop">Quick cleanup for a sharper look.</p>
-                            </div>
-                            <div class="table_cell"><p class="table_row-text hide-mobile-landscape">30m</p></div>
-                            <div class="table_cell"><p class="table_row-text">From $30</p></div>
-                          </div>
-                          <div class="table_row-hover-overlay"></div>
-                        </div>
-
-                        <div class="table_row">
-                          <div class="table_row-inner">
-                            <div class="table_cell-wide">
-                              <div class="table_row-head">Maintenance Cut</div>
-                              <p class="table_row-text is-desktop">Light cleanup between full cuts.</p>
-                            </div>
-                            <div class="table_cell"><p class="table_row-text hide-mobile-landscape">1h</p></div>
-                            <div class="table_cell"><p class="table_row-text">$50</p></div>
-                          </div>
-                          <div class="table_row-hover-overlay"></div>
-                        </div>
-
-                        <div style="margin-top:24px;text-align:center;">
-                          <a href="https://silver-lining-barber.square.site/" class="button w-inline-block"><div>Book a Time</div></a>
-                        </div>
-
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
+  <!-- DESKTOP / TABLET TABLE (unchanged) -->
+  <div class="sl-pricing-desktop">
+    <div class="table_row">
+      <div class="table_row-inner">
+        <div class="table_cell-wide">
+          <div class="table_row-head">Haircut + Beard (Julian)</div>
+          <p class="table_row-text is-desktop">Precision haircut + detailed beard work.</p>
         </div>
-      </section>
+        <div class="table_cell"><p class="table_row-text hide-mobile-landscape">1h</p></div>
+        <div class="table_cell"><p class="table_row-text">From $100</p></div>
+      </div>
+      <div class="table_row-hover-overlay"></div>
+    </div>
 
-      <!-- TEAM -->
-      <section id="team">
-        <div class="padding-global">
-          <div class="container-large">
-            <div class="padding-section-large">
-              <div class="sl-card" style="padding:24px;">
-                <h2 style="margin:0 0 10px 0;">Meet The Team</h2>
-                <p style="margin:0;">Add your full Team section markup here (this anchor existed in your nav).</p>
-              </div>
-            </div>
-          </div>
+    <div class="table_row">
+      <div class="table_row-inner">
+        <div class="table_cell-wide">
+          <div class="table_row-head">Silver Lining Exclusive (Julian)</div>
+          <p class="table_row-text is-desktop">Full premium session — haircut + grooming details.</p>
         </div>
-      </section>
+        <div class="table_cell"><p class="table_row-text hide-mobile-landscape">2h</p></div>
+        <div class="table_cell"><p class="table_row-text">From $200</p></div>
+      </div>
+      <div class="table_row-hover-overlay"></div>
+    </div>
+
+    <div class="table_row">
+      <div class="table_row-inner">
+        <div class="table_cell-wide">
+          <div class="table_row-head">Haircut (Julian)</div>
+          <p class="table_row-text is-desktop">Clean fade, taper, or classic cut — tailored to you.</p>
+        </div>
+        <div class="table_cell"><p class="table_row-text hide-mobile-landscape">1h</p></div>
+        <div class="table_cell"><p class="table_row-text">From $80</p></div>
+      </div>
+      <div class="table_row-hover-overlay"></div>
+    </div>
+
+    <div class="table_row">
+      <div class="table_row-inner">
+        <div class="table_cell-wide">
+          <div class="table_row-head">Beard Only (Julian)</div>
+          <p class="table_row-text is-desktop">Shape, trim, line-up, and finish.</p>
+        </div>
+        <div class="table_cell"><p class="table_row-text hide-mobile-landscape">30m</p></div>
+        <div class="table_cell"><p class="table_row-text">From $40</p></div>
+      </div>
+      <div class="table_row-hover-overlay"></div>
+    </div>
+
+    <div class="table_row">
+      <div class="table_row-inner">
+        <div class="table_cell-wide">
+          <div class="table_row-head">Beard Trim</div>
+          <p class="table_row-text is-desktop">Quick cleanup for a sharper look.</p>
+        </div>
+        <div class="table_cell"><p class="table_row-text hide-mobile-landscape">30m</p></div>
+        <div class="table_cell"><p class="table_row-text">From $30</p></div>
+      </div>
+      <div class="table_row-hover-overlay"></div>
+    </div>
+
+    <div class="table_row">
+      <div class="table_row-inner">
+        <div class="table_cell-wide">
+          <div class="table_row-head">Maintenance Cut</div>
+          <p class="table_row-text is-desktop">Light cleanup between full cuts.</p>
+        </div>
+        <div class="table_cell"><p class="table_row-text hide-mobile-landscape">1h</p></div>
+        <div class="table_cell"><p class="table_row-text">$50</p></div>
+      </div>
+      <div class="table_row-hover-overlay"></div>
+    </div>
+
+    <div style="margin-top:24px;text-align:center;">
+      <a href="https://silver-lining-barber.square.site/" class="button w-inline-block"><div>Book a Time</div></a>
+    </div>
+  </div>
+
+  <!-- MOBILE CARD GRID (new) -->
+  <div class="sl-pricing-mobile" aria-label="Pricing cards">
+    <div class="sl-price-card">
+      <div class="sl-price-top">
+        <div class="sl-price-name">Haircut + Beard</div>
+        <div class="sl-price-pill">From $100</div>
+      </div>
+      <div class="sl-price-meta">Julian • 1h</div>
+    </div>
+
+    <div class="sl-price-card">
+      <div class="sl-price-top">
+        <div class="sl-price-name">Exclusive Session</div>
+        <div class="sl-price-pill">From $200</div>
+      </div>
+      <div class="sl-price-meta">Julian • 2h</div>
+    </div>
+
+    <div class="sl-price-card">
+      <div class="sl-price-top">
+        <div class="sl-price-name">Haircut</div>
+        <div class="sl-price-pill">From $80</div>
+      </div>
+      <div class="sl-price-meta">Julian • 1h</div>
+    </div>
+
+    <div class="sl-price-card">
+      <div class="sl-price-top">
+        <div class="sl-price-name">Beard Only</div>
+        <div class="sl-price-pill">From $40</div>
+      </div>
+      <div class="sl-price-meta">Julian • 30m</div>
+    </div>
+
+    <div class="sl-price-card">
+      <div class="sl-price-top">
+        <div class="sl-price-name">Beard Trim</div>
+        <div class="sl-price-pill">From $30</div>
+      </div>
+      <div class="sl-price-meta">30m</div>
+    </div>
+
+    <div class="sl-price-card">
+      <div class="sl-price-top">
+        <div class="sl-price-name">Maintenance Cut</div>
+        <div class="sl-price-pill">$50</div>
+      </div>
+      <div class="sl-price-meta">1h</div>
+    </div>
+
+    <div class="sl-price-cta">
+      <a href="https://silver-lining-barber.square.site/" class="button w-inline-block"><div>Book a Time</div></a>
+    </div>
+  </div>
+
+</div>
+
 
       <!-- SKIN CARE (Sister Brand) -->
       <section id="skincare" style="margin-top:0;">
