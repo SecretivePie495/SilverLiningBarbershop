@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
+
   <!-- FAVICON -->
   <link rel="icon" type="image/png" href="images/jujucutz.png" />
 
@@ -63,29 +63,66 @@
     .lenis.lenis-stopped { overflow: hidden; }
   </style>
 
-  <!-- ✅ GLOBAL COLORS + SURFACES (NOW: GREY / BLACK / WHITE) -->
+  <!-- ✅ GLOBAL COLORS + SURFACES (GREY / BLACK / WHITE) -->
   <style>
     :root {
       /* Monochrome base */
-      --color-scheme-1--background: #f2f2f2;             /* page bg */
-      --color-scheme-1--foreground: rgba(255,255,255,0.96); /* cards/panels */
-      --color-scheme-1--text: #0f0f0f;                  /* near-black text */
-      --color-scheme-1--border: rgba(0,0,0,0.12);       /* soft borders */
+      --sl-bg: #f2f2f2;
+      --sl-surface: rgba(255,255,255,0.96);
+      --sl-text: #0f0f0f;
+      --sl-muted: rgba(15,15,15,0.78);
+      --sl-border: rgba(0,0,0,0.12);
+      --sl-shadow: 0 12px 30px rgba(0,0,0,0.06);
 
-      /* Accent (primary CTA) */
-      --color-scheme-1--accent: #0f0f0f;                /* BLACK */
+      /* Accent */
+      --sl-accent: #0f0f0f;
+
+      /* Typography scale (consistent across site) */
+      --sl-font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      --sl-h1: clamp(34px, 4.2vw, 56px);
+      --sl-h2: clamp(26px, 3vw, 40px);
+      --sl-h3: clamp(18px, 2.1vw, 26px);
+      --sl-p: 16px;
+      --sl-small: 13px;
+      --sl-radius: 16px;
     }
 
     html, body {
-      background: var(--color-scheme-1--background) !important;
-      color: var(--color-scheme-1--text) !important;
+      background: var(--sl-bg) !important;
+      color: var(--sl-text) !important;
+      font-family: var(--sl-font) !important;
     }
 
-    /* Links (keep subtle, not gold) */
+    /* Global typography consistency */
+    h1, h2, h3, h4, h5, h6 {
+      color: var(--sl-text) !important;
+      letter-spacing: -0.02em;
+    }
+
+    h1 { font-size: var(--sl-h1) !important; line-height: 1.06 !important; }
+    h2 { font-size: var(--sl-h2) !important; line-height: 1.15 !important; }
+    h3 { font-size: var(--sl-h3) !important; line-height: 1.2 !important; }
+
+    p, li, .text-block, .faq-answer, .table_row-text {
+      font-size: var(--sl-p) !important;
+      line-height: 1.65 !important;
+      color: var(--sl-muted) !important;
+    }
+
+    .review-name, .faq-question, .table_row-head {
+      color: var(--sl-text) !important;
+    }
+
+    .text-block, small, .sl-small {
+      font-size: var(--sl-small) !important;
+      color: rgba(15,15,15,0.65) !important;
+      line-height: 1.5 !important;
+    }
+
     a { color: #111 !important; }
     a:hover { color: #000 !important; }
 
-    /* Focus outline (neutral gray) */
+    /* Focus outline */
     *[tabindex]:focus-visible,
     input[type="file"]:focus-visible {
       outline: 0.125rem solid rgba(0,0,0,0.35);
@@ -97,38 +134,40 @@
     .testimonial15_component,
     .faq8_component,
     .section-video .video-section {
-      background: var(--color-scheme-1--foreground) !important;
-      border: 1px solid var(--color-scheme-1--border) !important;
-      border-radius: 16px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+      background: var(--sl-surface) !important;
+      border: 1px solid var(--sl-border) !important;
+      border-radius: var(--sl-radius) !important;
+      box-shadow: var(--sl-shadow) !important;
     }
 
-    /* Make the slider arrows invisible if they exist */
+    .sl-card{
+      background: var(--sl-surface) !important;
+      border: 1px solid var(--sl-border) !important;
+      border-radius: var(--sl-radius) !important;
+      box-shadow: var(--sl-shadow) !important;
+    }
+
+    /* Slider arrows invisible */
     #reviews .w-slider-arrow-left,
     #reviews .w-slider-arrow-right {
       display: none !important;
     }
 
-    /* Pricing row hover overlay (subtle + light) */
+    /* Pricing row hover overlay */
     .table_row-hover-overlay {
       background-color: rgba(0, 0, 0, 0.045) !important;
     }
 
-    /* Responsive spacing polish */
-    @media (max-width: 767px) {
-      .padding-section-large { padding-top: 3.5rem !important; padding-bottom: 3.5rem !important; }
-    }
-
-    /* Utility: consistent local cards we control (used in Contact section) */
-    .sl-card{
-      background: var(--color-scheme-1--foreground) !important;
-      border: 1px solid var(--color-scheme-1--border) !important;
-      border-radius: 16px;
-      box-shadow: 0 12px 30px rgba(0,0,0,0.06);
-    }
-
-    /* Tiny alignment safety: prevents image wrappers from creating odd gaps */
+    /* Prevent odd gaps / overflow */
     img { max-width: 100%; height: auto; }
+    body { overflow-x: hidden; }
+    h1, h2, h3, p, a { word-wrap: break-word; overflow-wrap: anywhere; }
+
+    @media (max-width: 767px) {
+      .padding-section-large { padding-top: 3rem !important; padding-bottom: 3rem !important; }
+      .padding-global{ padding-left: 16px !important; padding-right: 16px !important; }
+      .container-large{ max-width: 100% !important; }
+    }
   </style>
 
   <!-- ✅ LOCATION / CONTACT MOBILE POLISH -->
@@ -174,6 +213,171 @@
     @media (max-width: 420px){
       #contact .sl-map iframe{
         height:260px;
+      }
+    }
+  </style>
+
+  <!-- ✅ MOBILE + TYPOGRAPHY FIXES (Hero, Pricing, Footer, Skincare) -->
+  <style>
+    /* NAV: make top "Book now" smaller + consistent on mobile */
+    @media (max-width: 767px){
+      .button.is-nav.w-button{
+        padding: 10px 14px !important;
+        font-size: 14px !important;
+        line-height: 1 !important;
+        min-height: 36px !important;
+        border-radius: 999px !important;
+        box-shadow: 0 8px 18px rgba(0,0,0,0.22) !important;
+      }
+      .navbar2_container{
+        padding-left: 14px !important;
+        padding-right: 14px !important;
+      }
+    }
+
+    /* HERO polish */
+    .section_header15 h1{
+      text-wrap: balance;
+      max-width: 22ch;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero-subtitle{
+      font-weight: 700;
+      opacity: .82;
+      color: var(--sl-muted);
+      letter-spacing: -0.01em;
+    }
+    @media (max-width: 767px){
+      .section_header15 h1{
+        font-size: clamp(30px, 7.2vw, 40px) !important;
+        line-height: 1.08 !important;
+        max-width: 18ch;
+      }
+      .hero-subtitle{
+        font-size: 15px !important;
+        line-height: 1.35 !important;
+        max-width: 30ch;
+        margin-left:auto;
+        margin-right:auto;
+      }
+      .section_header15 .hero-p-wrapper p{
+        font-size: 16px !important;
+        line-height: 1.55 !important;
+        max-width: 34ch;
+        margin-left:auto;
+        margin-right:auto;
+      }
+      .section_header15 .margin-top.margin-medium{
+        width: 100%;
+        gap: 10px !important;
+        padding: 0 4px;
+      }
+      .section_header15 .margin-top.margin-medium a{
+        width: 100%;
+        display: inline-flex !important;
+        justify-content: center;
+      }
+      .section_header15 .image-wrapper{
+        border-radius: var(--sl-radius);
+        overflow: hidden;
+      }
+    }
+
+    /* PRICING: convert table to stacked cards on mobile */
+    @media (max-width: 767px){
+      .section_services .table_head{ display:none !important; }
+
+      .section_services .table_row{
+        border: 1px solid rgba(0,0,0,0.12) !important;
+        border-radius: 16px !important;
+        background: rgba(255,255,255,0.96) !important;
+        margin-bottom: 12px;
+        overflow:hidden;
+        position: relative;
+      }
+
+      .section_services .table_row-inner{
+        display:flex !important;
+        flex-direction: column !important;
+        gap: 10px !important;
+        padding: 14px 14px !important;
+      }
+
+      .section_services .table_row-head{
+        font-size: 16px !important;
+        font-weight: 800 !important;
+        line-height: 1.2;
+      }
+
+      .section_services .table_row-text.is-desktop{
+        display:block !important;
+        margin-top: 6px;
+        opacity: .86;
+        line-height: 1.5 !important;
+      }
+
+      .section_services .table_cell{
+        width: 100% !important;
+      }
+
+      .section_services .table_cell:nth-child(2),
+      .section_services .table_cell:nth-child(3){
+        display:inline-flex !important;
+        align-items:center;
+        justify-content: space-between;
+        gap: 10px;
+      }
+
+      .section_services .table_cell:nth-child(2) .table_row-text::before{
+        content:"Time";
+        font-weight:700;
+        opacity:.7;
+        margin-right: 10px;
+        color: var(--sl-text);
+      }
+      .section_services .table_cell:nth-child(3) .table_row-text::before{
+        content:"Price";
+        font-weight:700;
+        opacity:.7;
+        margin-right: 10px;
+        color: var(--sl-text);
+      }
+
+      .section_services .table_row-hover-overlay{ display:none !important; }
+    }
+
+    /* SKINCARE: responsive grid */
+    #skincare .sl-skin-grid{
+      display:grid;
+      grid-template-columns:1.2fr 0.8fr;
+      gap:18px;
+      align-items:center;
+    }
+    @media (max-width: 991px){
+      #skincare .sl-skin-grid{
+        grid-template-columns:1fr !important;
+      }
+    }
+
+    /* FOOTER: stack grid on smaller screens */
+    @media (max-width: 991px){
+      footer .container-large > div[style*="grid-template-columns"]{
+        grid-template-columns: 1fr !important;
+        gap: 18px !important;
+      }
+    }
+
+    /* Mobile CTA bar spacing */
+    @media (max-width: 767px){
+      body{ padding-bottom: 88px; }
+    }
+
+    /* Slightly smaller buttons on tiny phones */
+    @media (max-width: 420px){
+      .button, .w-button{
+        padding: 12px 18px !important;
+        font-size: 14px !important;
       }
     }
   </style>
@@ -233,12 +437,17 @@
                   <div class="margin-bottom margin-large">
                     <div class="text-align-center">
                       <div class="max-width-large align-center is-hero">
+
+                        <!-- ✅ Split headline for mobile fit -->
                         <div class="margin-bottom margin-xxsmall">
-                          <h1>Silver Lining Barbershop  Dallas Men’s Haircuts & Grooming</h1>
+                          <h1>Silver Lining Barbershop</h1>
+                          <div class="hero-subtitle">Dallas Men’s Haircuts & Grooming</div>
                         </div>
+
                         <div class="hero-p-wrapper">
                           <p>Clean cuts. Chill vibes. Fair prices. Book online in seconds.</p>
                         </div>
+
                         <div class="margin-top margin-medium" style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
                           <a href="https://silver-lining-barber.square.site/" class="button w-inline-block"><div>Book Now</div></a>
                           <a href="#contact" class="button is-outlined w-inline-block"><div>Get Directions</div></a>
@@ -363,7 +572,7 @@
                   <div class="margin-bottom margin-xxlarge">
                     <div class="max-width-medium">
                       <h2>Transparent Pricing, Premium Quality</h2>
-                      <p style="opacity:.85;margin-top:10px;">Book online — choose your service and lock your time.</p>
+                      <p style="margin-top:10px;">Book online — choose your service and lock your time.</p>
                     </div>
                   </div>
 
@@ -467,107 +676,99 @@
         </div>
       </section>
 
-      <!-- TEAM (Your nav links here; add your team markup here if you want it visible) -->
+      <!-- TEAM -->
       <section id="team">
         <div class="padding-global">
           <div class="container-large">
             <div class="padding-section-large">
               <div class="sl-card" style="padding:24px;">
                 <h2 style="margin:0 0 10px 0;">Meet The Team</h2>
-                <p style="margin:0;opacity:.85;">Add your full Team section markup here (this anchor existed in your nav).</p>
+                <p style="margin:0;">Add your full Team section markup here (this anchor existed in your nav).</p>
               </div>
             </div>
           </div>
         </div>
       </section>
-<!-- SKIN CARE (Sister Brand) -->
-<section id="skincare" style="margin-top:0;">
-  <div class="padding-global">
-    <div class="container-large">
-      <div class="padding-section-large">
 
-        <div class="sl-card" style="padding:26px; overflow:hidden;">
-          <div style="
-            display:grid;
-            grid-template-columns:1.2fr 0.8fr;
-            gap:18px;
-            align-items:center;
-          ">
+      <!-- SKIN CARE (Sister Brand) -->
+      <section id="skincare" style="margin-top:0;">
+        <div class="padding-global">
+          <div class="container-large">
+            <div class="padding-section-large">
 
-            <div>
-              <div style="
-                display:inline-block;
-                padding:6px 10px;
-                border-radius:999px;
-                border:1px solid rgba(0,0,0,0.16);
-                font-weight:700;
-                font-size:12px;
-                letter-spacing:.08em;
-                text-transform:uppercase;
-                opacity:.9;
-              ">Also inside Silver Lining</div>
+              <div class="sl-card" style="padding:26px; overflow:hidden;">
+                <div class="sl-skin-grid">
 
-              <h2 style="margin:12px 0 8px 0;">Skin Care & Facials</h2>
-              <p style="margin:0; opacity:.88; max-width:520px; line-height:1.6;">
-                Visiting with your girlfriend, sister, or friend? We also offer facials and skin care services in the same location.
-                Book directly with <strong>Skin by Nids</strong>.
-              </p>
+                  <div>
+                    <div style="
+                      display:inline-block;
+                      padding:6px 10px;
+                      border-radius:999px;
+                      border:1px solid rgba(0,0,0,0.16);
+                      font-weight:700;
+                      font-size:12px;
+                      letter-spacing:.08em;
+                      text-transform:uppercase;
+                      opacity:.9;
+                      color: var(--sl-text);
+                    ">Also inside Silver Lining</div>
 
-              <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
-                <a class="button w-inline-block" href="https://www.skinbynids.co/" target="_blank" rel="noopener">
-                  <div>Book Skin Care</div>
-                </a>
+                    <h2 style="margin:12px 0 8px 0;">Skin Care & Facials</h2>
+                    <p style="margin:0; max-width:520px;">
+                      Visiting with your girlfriend, sister, or friend? We also offer facials and skin care services in the same location.
+                      Book directly with <strong style="color:var(--sl-text);">Skin by Nids</strong>.
+                    </p>
 
-                <a class="button is-outlined w-inline-block" href="https://www.skinbynids.co/s/appointments" target="_blank" rel="noopener">
-                  <div>View Services</div>
-                </a>
+                    <div style="margin-top:16px; display:flex; gap:10px; flex-wrap:wrap;">
+                      <a class="button w-inline-block" href="https://www.skinbynids.co/" target="_blank" rel="noopener">
+                        <div>Book Skin Care</div>
+                      </a>
+
+                      <a class="button is-outlined w-inline-block" href="https://www.skinbynids.co/s/appointments" target="_blank" rel="noopener">
+                        <div>View Services</div>
+                      </a>
+                    </div>
+
+                    <div class="sl-small" style="margin-top:12px;">
+                      Perfect for: facials • acne care • glow-ups • self-care days
+                    </div>
+                  </div>
+
+                  <div class="sl-card" style="
+                    padding:18px;
+                    background: rgba(255,255,255,0.85) !important;
+                    border: 1px solid rgba(0,0,0,0.12) !important;
+                    border-radius:16px;
+                    box-shadow: none !important;
+                  ">
+                    <div style="font-weight:800; font-size:16px; margin-bottom:8px; color:var(--sl-text);">Skin by Nids</div>
+                    <div style="opacity:.85; line-height:1.65; color:var(--sl-muted);">
+                      Professional facials + skincare treatments<br/>
+                      Book online in minutes
+                    </div>
+
+                    <div style="margin-top:14px;">
+                      <a href="https://www.skinbynids.co/" target="_blank" rel="noopener" style="
+                        display:inline-flex;
+                        align-items:center;
+                        gap:8px;
+                        font-weight:700;
+                        text-decoration:none;
+                        color: var(--sl-text);
+                      ">
+                        Visit Skin by Nids →
+                      </a>
+                    </div>
+                  </div>
+
+                </div>
               </div>
 
-              <div style="margin-top:12px; opacity:.75; font-size:13px;">
-                Perfect for: facials • acne care • glow-ups • self-care days
-              </div>
             </div>
-
-            <div class="sl-card" style="
-              padding:18px;
-              background: rgba(255,255,255,0.85) !important;
-              border: 1px solid rgba(0,0,0,0.12) !important;
-              border-radius:16px;
-            ">
-              <div style="font-weight:800; font-size:16px; margin-bottom:8px;">Skin by Nids</div>
-              <div style="opacity:.85; line-height:1.65;">
-                Professional facials + skincare treatments<br/>
-                Book online in minutes
-              </div>
-
-              <div style="margin-top:14px;">
-                <a href="https://www.skinbynids.co/" target="_blank" rel="noopener" style="
-                  display:inline-flex;
-                  align-items:center;
-                  gap:8px;
-                  font-weight:700;
-                  text-decoration:none;
-                ">
-                  Visit Skin by Nids →
-                </a>
-              </div>
-            </div>
-
           </div>
         </div>
+      </section>
 
-        <style>
-          @media (max-width: 991px){
-            #skincare .sl-card > div{
-              grid-template-columns:1fr !important;
-            }
-          }
-        </style>
-
-      </div>
-    </div>
-  </div>
-</section>
       <!-- FAQ -->
       <section id="faq">
         <div class="padding-global">
@@ -654,25 +855,25 @@
 
                 <div class="sl-card" style="padding:20px;">
                   <h2 style="margin:0 0 8px 0;">Location & Hours</h2>
-                  <p style="opacity:.9;margin:0 0 14px 0;">Visit us in Coppell — easy booking, easy parking, clean results.</p>
+                  <p style="margin:0 0 14px 0;">Visit us in Coppell — easy booking, easy parking, clean results.</p>
 
-                  <div style="opacity:.9;line-height:1.6;">
-                    <div><strong>Phone Number:</strong> <span>(214) 471-6508</span></div>
-                    <div><strong>Address:</strong> <span>777 S MacArthur Blvd Ste 405, Coppell, TX 75019</span></div>
-                    <div><strong>Booking:</strong> <a href="https://silver-lining-barber.square.site/">silver-lining-barber.square.site</a></div>
+                  <div style="opacity:.95;line-height:1.6;color:var(--sl-muted);">
+                    <div><strong style="color:var(--sl-text);">Phone Number:</strong> <span>(214) 471-6508</span></div>
+                    <div><strong style="color:var(--sl-text);">Address:</strong> <span>777 S MacArthur Blvd Ste 405, Coppell, TX 75019</span></div>
+                    <div><strong style="color:var(--sl-text);">Booking:</strong> <a href="https://silver-lining-barber.square.site/">silver-lining-barber.square.site</a></div>
                   </div>
 
-                  <div style="margin-top:16px;opacity:.9;line-height:1.6;">
-                    <div><strong>Mon–Fri:</strong> 9am – 7pm</div>
-                    <div><strong>Sat:</strong> 9am – 5pm</div>
-                    <div><strong>Sun:</strong> Closed</div>
+                  <div style="margin-top:16px;opacity:.95;line-height:1.6;color:var(--sl-muted);">
+                    <div><strong style="color:var(--sl-text);">Mon–Fri:</strong> 9am – 7pm</div>
+                    <div><strong style="color:var(--sl-text);">Sat:</strong> 9am – 5pm</div>
+                    <div><strong style="color:var(--sl-text);">Sun:</strong> Closed</div>
                   </div>
 
                   <div class="sl-actions">
                     <a class="button w-inline-block" href="https://silver-lining-barber.square.site/"><div>Book Now</div></a>
                     <a class="button is-outlined w-inline-block"
-                       href="https://www.google.com/maps/dir/?api=1&destination=777+S+MacArthur+Blvd+Ste+405,+Coppell,+TX+75019"
-                       target="_blank" rel="noopener"><div>Get Directions</div></a>
+                      href="https://www.google.com/maps/dir/?api=1&destination=777+S+MacArthur+Blvd+Ste+405,+Coppell,+TX+75019"
+                      target="_blank" rel="noopener"><div>Get Directions</div></a>
                   </div>
                 </div>
               </div>
@@ -688,19 +889,19 @@
           <div class="container-large">
             <div style="padding:32px 0;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:24px;">
               <div>
-                <div style="font-weight:700;font-size:18px;">Silver Lining Barbershop</div>
-                <p style="opacity:.85;margin-top:10px;max-width:420px;">
+                <div style="font-weight:700;font-size:18px;color:var(--sl-text);">Silver Lining Barbershop</div>
+                <p style="margin-top:10px;max-width:420px;">
                   Premium men’s grooming in Dallas — clean cuts, chill vibes, fair prices.
                 </p>
-                <div style="margin-top:14px;opacity:.9;">
-                  <div><strong>Book:</strong> <a href="https://silver-lining-barber.square.site/">Online Scheduling</a></div>
-                  <div><strong>Location:</strong> Dallas, TX</div>
+                <div style="margin-top:14px;opacity:.9;color:var(--sl-muted);">
+                  <div><strong style="color:var(--sl-text);">Book:</strong> <a href="https://silver-lining-barber.square.site/">Online Scheduling</a></div>
+                  <div><strong style="color:var(--sl-text);">Location:</strong> Dallas, TX</div>
                 </div>
               </div>
 
               <div>
-                <div style="font-weight:700;margin-bottom:10px;">Quick Links</div>
-                <div style="display:grid;gap:8px;opacity:.9;">
+                <div style="font-weight:700;margin-bottom:10px;color:var(--sl-text);">Quick Links</div>
+                <div style="display:grid;gap:8px;opacity:.95;">
                   <a href="#pricing">Pricing</a>
                   <a href="#reviews">Reviews</a>
                   <a href="#faq">FAQ</a>
@@ -709,8 +910,8 @@
               </div>
 
               <div>
-                <div style="font-weight:700;margin-bottom:10px;">Hours</div>
-                <div style="opacity:.9;line-height:1.7;">
+                <div style="font-weight:700;margin-bottom:10px;color:var(--sl-text);">Hours</div>
+                <div style="opacity:.95;line-height:1.7;color:var(--sl-muted);">
                   <div>Mon–Fri: 9am – 7pm</div>
                   <div>Sat: 9am – 5pm</div>
                   <div>Sun: Closed</div>
@@ -754,8 +955,10 @@
       text-align: center;
       padding: 12px 14px;
       border-radius: 12px;
-      font-weight: 600;
+      font-weight: 700;
       text-decoration: none;
+      font-size: 14px;
+      line-height: 1.1;
     }
     .mobile-cta .cta-book {
       background: #0f0f0f;
@@ -815,8 +1018,8 @@
     .w-button {
       border-radius: 999px !important;
       padding: 14px 26px !important;
-      font-weight: 700 !important;
-      letter-spacing: 0.3px;
+      font-weight: 800 !important;
+      letter-spacing: 0.2px;
 
       background: linear-gradient(
         135deg,
@@ -857,10 +1060,11 @@
     .button.is-outlined {
       border-radius: 999px !important;
       padding: 14px 26px !important;
-      font-weight: 600 !important;
+      font-weight: 800 !important;
       background: transparent !important;
       border: 1.5px solid rgba(0,0,0,0.25) !important;
       color: #0f0f0f !important;
+      box-shadow: none !important;
     }
   </style>
 
