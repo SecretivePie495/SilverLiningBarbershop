@@ -234,7 +234,16 @@
         padding-right: 14px !important;
       }
     }
-
+    
+/* ✅ Push hero headline down */
+  .section_header15 .max-width-large.align-center.is-hero{
+    padding-top: 18px; /* desktop */
+  }
+  @media (max-width: 767px){
+    .section_header15 .max-width-large.align-center.is-hero{
+      padding-top: 22px; /* mobile */
+    }
+  }
     /* HERO polish */
     .section_header15 h1{
       text-wrap: balance;
@@ -1068,5 +1077,17 @@
     }
   </style>
 
+  <style>
+  /* Force mobile CTA Book button text to white */
+  .mobile-cta .cta-book{
+    color: #ffffff !important;
+  }
+
+  .mobile-cta .cta-book:hover,
+  .mobile-cta .cta-book:active,
+  .mobile-cta .cta-book:visited{
+    color: #ffffff !important;
+  }
+</style>
 </body>
 </html>
