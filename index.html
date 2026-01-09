@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Updated single-file HTML for Silver Lining Barbershop (Dallas) -->
+<!-- Updated single-file HTML for Silver Lining Barbershop (Dallas) — DARK GREY THEME -->
 <html data-wf-domain="silverliningbarbershop.netlify.app" data-wf-page="home" data-wf-site="silverlining">
 <head>
   <meta charset="utf-8" />
@@ -63,21 +63,21 @@
     .lenis.lenis-stopped { overflow: hidden; }
   </style>
 
-  <!-- ✅ GLOBAL COLORS + SURFACES (GREY / BLACK / WHITE) -->
+  <!-- ✅ GLOBAL COLORS + SURFACES (DARK GREY THEME) -->
   <style>
-    :root {
-      /* Monochrome base */
-      --sl-bg: #f2f2f2;
-      --sl-surface: rgba(255,255,255,0.96);
-      --sl-text: #0f0f0f;
-      --sl-muted: rgba(15,15,15,0.78);
-      --sl-border: rgba(0,0,0,0.12);
-      --sl-shadow: 0 12px 30px rgba(0,0,0,0.06);
+    :root{
+      /* Dark theme base */
+      --sl-bg: #2b2b2f;                 /* page background */
+      --sl-surface: rgba(45,45,50,0.96);/* card surfaces */
+      --sl-text: #f3f4f6;               /* main text */
+      --sl-muted: rgba(243,244,246,0.72);
+      --sl-border: rgba(255,255,255,0.10);
+      --sl-shadow: 0 18px 55px rgba(0,0,0,0.55);
 
       /* Accent */
-      --sl-accent: #0f0f0f;
+      --sl-accent: #ffffff;
 
-      /* Typography scale (consistent across site) */
+      /* Typography scale */
       --sl-font: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
       --sl-h1: clamp(34px, 4.2vw, 56px);
       --sl-h2: clamp(26px, 3vw, 40px);
@@ -87,14 +87,14 @@
       --sl-radius: 16px;
     }
 
-    html, body {
+    html, body{
       background: var(--sl-bg) !important;
       color: var(--sl-text) !important;
       font-family: var(--sl-font) !important;
     }
 
     /* Global typography consistency */
-    h1, h2, h3, h4, h5, h6 {
+    h1, h2, h3, h4, h5, h6{
       color: var(--sl-text) !important;
       letter-spacing: -0.02em;
     }
@@ -103,43 +103,37 @@
     h2 { font-size: var(--sl-h2) !important; line-height: 1.15 !important; }
     h3 { font-size: var(--sl-h3) !important; line-height: 1.2 !important; }
 
-    p, li, .text-block, .faq-answer, .table_row-text {
+    p, li, .text-block, .faq-answer, .table_row-text{
       font-size: var(--sl-p) !important;
       line-height: 1.65 !important;
       color: var(--sl-muted) !important;
     }
 
-    .review-name, .faq-question, .table_row-head {
+    .review-name, .faq-question, .table_row-head{
       color: var(--sl-text) !important;
     }
 
-    .text-block, small, .sl-small {
+    .text-block, small, .sl-small{
       font-size: var(--sl-small) !important;
-      color: rgba(15,15,15,0.65) !important;
+      color: rgba(243,244,246,0.60) !important;
       line-height: 1.5 !important;
     }
 
-    a { color: #111 !important; }
-    a:hover { color: #000 !important; }
+    a { color: rgba(243,244,246,0.92) !important; }
+    a:hover { color: #fff !important; }
 
     /* Focus outline */
     *[tabindex]:focus-visible,
-    input[type="file"]:focus-visible {
-      outline: 0.125rem solid rgba(0,0,0,0.35);
+    input[type="file"]:focus-visible{
+      outline: 0.125rem solid rgba(255,255,255,0.28);
       outline-offset: 0.125rem;
     }
 
-    /* Clean, light “card” surfaces across site */
+    /* Clean, dark “card” surfaces across site */
     .section_services .table_component,
     .testimonial15_component,
     .faq8_component,
-    .section-video .video-section {
-      background: var(--sl-surface) !important;
-      border: 1px solid var(--sl-border) !important;
-      border-radius: var(--sl-radius) !important;
-      box-shadow: var(--sl-shadow) !important;
-    }
-
+    .section-video .video-section,
     .sl-card{
       background: var(--sl-surface) !important;
       border: 1px solid var(--sl-border) !important;
@@ -155,13 +149,32 @@
 
     /* Pricing row hover overlay */
     .table_row-hover-overlay {
-      background-color: rgba(0, 0, 0, 0.045) !important;
+      background-color: rgba(255, 255, 255, 0.04) !important;
     }
 
     /* Prevent odd gaps / overflow */
     img { max-width: 100%; height: auto; }
     body { overflow-x: hidden; }
     h1, h2, h3, p, a { word-wrap: break-word; overflow-wrap: anywhere; }
+
+    /* Make sections transparent so body bg shows through */
+    .page-wrapper,
+    .main-wrapper,
+    .w-layout-blockcontainer,
+    .section_header15,
+    .section_testimonial15,
+    .section_services,
+    .section-video,
+    #faq,
+    #contact,
+    #skincare{
+      background: transparent !important;
+    }
+
+    /* Navbar transparent over dark */
+    .navbar2_component{
+      background: transparent !important;
+    }
 
     @media (max-width: 767px) {
       .padding-section-large { padding-top: 3rem !important; padding-bottom: 3rem !important; }
@@ -219,71 +232,69 @@
 
   <!-- ✅ MOBILE + TYPOGRAPHY FIXES (Hero, Pricing, Footer, Skincare) -->
   <style>
+    /* ✅ Pricing: desktop/tablet uses table, mobile uses card grid */
+    .sl-pricing-mobile{ display:none; }
 
-  /* ✅ Pricing: desktop/tablet uses table, mobile uses card grid */
-.sl-pricing-mobile{ display:none; }
+    @media (max-width: 767px){
+      .sl-pricing-desktop{ display:none !important; }
+      .sl-pricing-mobile{ display:grid !important; }
 
-@media (max-width: 767px){
-  .sl-pricing-desktop{ display:none !important; }
-  .sl-pricing-mobile{ display:grid !important; }
+      .sl-pricing-mobile{
+        grid-template-columns: repeat(2, minmax(0,1fr));
+        gap: 12px;
+      }
 
-  .sl-pricing-mobile{
-    grid-template-columns: repeat(2, minmax(0,1fr));
-    gap: 12px;
-  }
+      .sl-price-card{
+        background: var(--sl-surface) !important;
+        border: 1px solid var(--sl-border) !important;
+        border-radius: 16px;
+        padding: 14px;
+        box-shadow: var(--sl-shadow) !important;
+      }
 
-  .sl-price-card{
-    background: rgba(255,255,255,0.96);
-    border: 1px solid rgba(0,0,0,0.12);
-    border-radius: 16px;
-    padding: 14px;
-    box-shadow: 0 10px 24px rgba(0,0,0,0.06);
-  }
+      .sl-price-top{
+        display:flex;
+        align-items:flex-start;
+        justify-content:space-between;
+        gap: 10px;
+      }
 
-  .sl-price-top{
-    display:flex;
-    align-items:flex-start;
-    justify-content:space-between;
-    gap: 10px;
-  }
+      .sl-price-name{
+        font-weight: 850;
+        color: var(--sl-text);
+        font-size: 15px;
+        line-height: 1.15;
+      }
 
-  .sl-price-name{
-    font-weight: 850;
-    color: var(--sl-text);
-    font-size: 15px;
-    line-height: 1.15;
-  }
+      .sl-price-pill{
+        font-weight: 800;
+        font-size: 12px;
+        padding: 7px 10px;
+        border-radius: 999px;
+        background: rgba(255,255,255,0.08);
+        color: var(--sl-text);
+        white-space: nowrap;
+      }
 
-  .sl-price-pill{
-    font-weight: 800;
-    font-size: 12px;
-    padding: 7px 10px;
-    border-radius: 999px;
-    background: rgba(15,15,15,0.08);
-    color: var(--sl-text);
-    white-space: nowrap;
-  }
+      .sl-price-meta{
+        margin-top: 10px;
+        font-size: 13px;
+        color: rgba(243,244,246,0.70);
+        line-height: 1.3;
+      }
 
-  .sl-price-meta{
-    margin-top: 10px;
-    font-size: 13px;
-    color: rgba(15,15,15,0.68);
-    line-height: 1.3;
-  }
+      .sl-price-cta{
+        grid-column: 1 / -1;
+        margin-top: 8px;
+        text-align:center;
+      }
+    }
 
-  .sl-price-cta{
-    grid-column: 1 / -1;
-    margin-top: 8px;
-    text-align:center;
-  }
-}
-
-@media (max-width: 380px){
-  .sl-pricing-mobile{
-    grid-template-columns: 1fr;
-  }
-}
-
+    @media (max-width: 380px){
+      .sl-pricing-mobile{
+        grid-template-columns: 1fr;
+      }
+    }
 
     /* NAV: make top "Book now" smaller + consistent on mobile */
     @media (max-width: 767px){
@@ -293,23 +304,24 @@
         line-height: 1 !important;
         min-height: 36px !important;
         border-radius: 999px !important;
-        box-shadow: 0 8px 18px rgba(0,0,0,0.22) !important;
+        box-shadow: 0 8px 18px rgba(0,0,0,0.55) !important;
       }
       .navbar2_container{
         padding-left: 14px !important;
         padding-right: 14px !important;
       }
     }
-    
-/* ✅ Push hero headline down */
-  .section_header15 .max-width-large.align-center.is-hero{
-    padding-top: 18px; /* desktop */
-  }
-  @media (max-width: 767px){
+
+    /* ✅ Push hero headline down */
     .section_header15 .max-width-large.align-center.is-hero{
-      padding-top: 22px; /* mobile */
+      padding-top: 18px;
     }
-  }
+    @media (max-width: 767px){
+      .section_header15 .max-width-large.align-center.is-hero{
+        padding-top: 22px;
+      }
+    }
+
     /* HERO polish */
     .section_header15 h1{
       text-wrap: balance;
@@ -319,7 +331,7 @@
     }
     .hero-subtitle{
       font-weight: 700;
-      opacity: .82;
+      opacity: .86;
       color: var(--sl-muted);
       letter-spacing: -0.01em;
     }
@@ -358,6 +370,7 @@
         overflow: hidden;
       }
     }
+
     /* SKINCARE: responsive grid */
     #skincare .sl-skin-grid{
       display:grid;
@@ -392,70 +405,73 @@
       }
     }
 
-/* 🌸 SKIN BY NIDS – feminine pink theme */
-#skincare{
-  background: linear-gradient(
-    180deg,
-    rgba(255, 235, 243, 0.65),
-    rgba(255, 245, 249, 0.9)
-  );
-}
-
-#skincare .sl-card{
-  background: rgba(255, 255, 255, 0.96) !important;
-  border: 1px solid rgba(236, 72, 153, 0.22) !important;
-  box-shadow: 0 18px 40px rgba(236, 72, 153, 0.12) !important;
-}
-
-/* Pink badge at top */
-#skincare [style*="Also inside Silver Lining"]{
-  border-color: rgba(236, 72, 153, 0.45) !important;
-  color: #be185d !important;
-  background: rgba(236, 72, 153, 0.08);
-}
-
-/* Headings */
-#skincare h2{
-  color: #9d174d !important;
-}
-
-/* Paragraph text */
-#skincare p{
-  color: rgba(159, 18, 82, 0.85) !important;
-}
-
-/* Buttons */
-#skincare .button{
-  background: linear-gradient(
-    135deg,
-    #ec4899 0%,
-    #f472b6 45%,
-    #ec4899 100%
-  ) !important;
-  color: #fff !important;
-  box-shadow: 0 14px 30px rgba(236, 72, 153, 0.35) !important;
-}
-
-#skincare .button.is-outlined{
-  background: transparent !important;
-  border: 1.5px solid rgba(236, 72, 153, 0.45) !important;
-  color: #be185d !important;
-  box-shadow: none !important;
-}
-
-/* Links */
-#skincare a{
-  color: #be185d !important;
-}
-
-/* Small text */
-#skincare .sl-small{
-  color: rgba(159, 18, 82, 0.7) !important;
-}
-
-
-    
+    /* Make the small badge in skincare dark-friendly */
+    #skincare [style*="Also inside Silver Lining"]{
+      border-color: rgba(255,255,255,0.16) !important;
+      color: rgba(243,244,246,0.92) !important;
+      background: rgba(255,255,255,0.06) !important;
+    }
   </style>
+
+
+  <!-- ✅ MOBILE + TYPOGRAPHY FIXES (Hero, Pricing, Footer, Skincare) -->
+<style>
+  ...
+</style>
+
+<!-- ✅ MOBILE DESCALE: reduce vertical padding + big elements -->
+<style>
+/* ✅ MOBILE DESCALE: reduce vertical padding + big elements */
+@media (max-width: 767px){
+
+  .padding-section-large{
+    padding-top: 1.6rem !important;
+    padding-bottom: 1.6rem !important;
+  }
+
+  .margin-bottom.margin-large{ margin-bottom: 14px !important; }
+  .margin-bottom.margin-xxlarge{ margin-bottom: 18px !important; }
+  .margin-top.margin-medium{ margin-top: 14px !important; }
+
+  .section_header15 .padding-section-large.is-hero{
+    padding-top: 1.2rem !important;
+    padding-bottom: 1.2rem !important;
+  }
+  .section_header15 .image-wrapper{
+    margin-top: 10px !important;
+  }
+  .section_header15 .header15_image{
+    max-height: 280px !important;
+    width: 100% !important;
+    object-fit: cover !important;
+  }
+
+  .sl-price-card{ padding: 12px !important; }
+  .sl-price-meta{ margin-top: 6px !important; }
+
+  #skincare .sl-card{ padding: 18px !important; }
+
+  #contact .sl-map iframe{
+    height: 240px !important;
+  }
+
+  footer .padding-global .container-large > div[style*="padding:32px"]{
+    padding: 20px 0 !important;
+  }
+
+  body{ padding-bottom: 74px !important; }
+  .mobile-cta{
+    padding: 8px !important;
+    bottom: 12px !important;
+    left: 12px !important;
+    right: 12px !important;
+  }
+  .mobile-cta a{
+    padding: 10px 12px !important;
+    font-size: 13px !important;
+  }
+}
+</style>
 
   <!-- jQuery (needed for your existing $ handlers) -->
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -512,7 +528,6 @@
                     <div class="text-align-center">
                       <div class="max-width-large align-center is-hero">
 
-                        <!-- ✅ Split headline for mobile fit -->
                         <div class="margin-bottom margin-xxsmall">
                           <h1>Silver Lining Barbershop</h1>
                           <div class="hero-subtitle">Dallas Men’s Haircuts & Grooming</div>
@@ -552,90 +567,6 @@
         </div>
       </header>
 
-      <!-- REVIEWS -->
-      <section id="reviews" class="section_testimonial15">
-        <div class="padding-global">
-          <div class="container-large">
-            <div class="padding-section-large">
-              <div class="testimonial15_component">
-                <div data-delay="4000" data-animation="slide" class="testimonial15_slider w-slider"
-                  data-autoplay="true" data-easing="ease" data-hide-arrows="true"
-                  data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="3" data-infinite="true">
-                  <div class="testimonial15_mask w-slider-mask">
-
-                    <div class="testimonial15_slide w-slide">
-                      <div class="w-layout-grid testimonial15_slide-content">
-                        <div class="testimonial15_client-image-wrapper">
-                          <img src="https://storage.googleapis.com/media.utg-media.com/julian_cut.jpg" alt="Client" loading="eager" class="testimonial15_client-image"/>
-                        </div>
-                        <div class="testimonial15_content-right">
-                          <h3 class="heading-style-h5">“Clean cuts with real attention to detail. Warm, professional vibe.”</h3>
-                          <div class="margin-top-auto">
-                            <div class="margin-top margin-large">
-                              <div class="testimonial15_client">
-                                <div class="testimonial15_client-info">
-                                  <div class="review-name">Julian Carerra</div>
-                                  <div class="text-block">2 weeks ago</div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="testimonial15_slide w-slide">
-                      <div class="w-layout-grid testimonial15_slide-content">
-                        <div class="testimonial15_client-image-wrapper">
-                          <img src="https://storage.googleapis.com/media.utg-media.com/Julian_cut1.jpg" alt="Client" loading="eager" class="testimonial15_client-image"/>
-                        </div>
-                        <div class="testimonial15_content-right">
-                          <h3 class="heading-style-h5">“Friendly, professional, never rushed. One of the best cuts I’ve had.”</h3>
-                          <div class="margin-top-auto">
-                            <div class="margin-top margin-large">
-                              <div class="testimonial15_client">
-                                <div class="testimonial15_client-info">
-                                  <div class="review-name">Carlos Miranda</div>
-                                  <div class="text-block">2 weeks ago</div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div class="testimonial15_slide w-slide">
-                      <div class="w-layout-grid testimonial15_slide-content">
-                        <div class="testimonial15_client-image-wrapper">
-                          <img src="https://cdn.prod.website-files.com/6820864bffb01eaaa3251c18/688e109521c7c8dbdec3ab57_jpeg-optimizer_image00013.avif" alt="Client" loading="eager" class="testimonial15_client-image"/>
-                        </div>
-                        <div class="testimonial15_content-right">
-                          <h3 class="heading-style-h5">“Great attention to detail, super chill vibe, and the cut came out even better than expected.”</h3>
-                          <div class="margin-top-auto">
-                            <div class="margin-top margin-large">
-                              <div class="testimonial15_client">
-                                <div class="testimonial15_client-info">
-                                  <div class="review-name">Carolina Jara</div>
-                                  <div class="text-block">2 months ago</div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                  </div>
-
-                  <div class="testimonial15_slide-nav w-slider-nav w-slider-nav-invert w-round"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       <!-- PRICING -->
       <section id="pricing" class="section_services">
         <div class="padding-global">
@@ -663,142 +594,148 @@
 
                     <div class="table_body">
 
-  <!-- DESKTOP / TABLET TABLE (unchanged) -->
-  <div class="sl-pricing-desktop">
-    <div class="table_row">
-      <div class="table_row-inner">
-        <div class="table_cell-wide">
-          <div class="table_row-head">Haircut + Beard (Julian)</div>
-          <p class="table_row-text is-desktop">Precision haircut + detailed beard work.</p>
+                      <!-- DESKTOP / TABLET TABLE -->
+                      <div class="sl-pricing-desktop">
+                        <div class="table_row">
+                          <div class="table_row-inner">
+                            <div class="table_cell-wide">
+                              <div class="table_row-head">Haircut + Beard (Julian)</div>
+                              <p class="table_row-text is-desktop">Precision haircut + detailed beard work.</p>
+                            </div>
+                            <div class="table_cell"><p class="table_row-text hide-mobile-landscape">1h</p></div>
+                            <div class="table_cell"><p class="table_row-text">From $100</p></div>
+                          </div>
+                          <div class="table_row-hover-overlay"></div>
+                        </div>
+
+                        <div class="table_row">
+                          <div class="table_row-inner">
+                            <div class="table_cell-wide">
+                              <div class="table_row-head">Silver Lining Exclusive (Julian)</div>
+                              <p class="table_row-text is-desktop">Full premium session — haircut + grooming details.</p>
+                            </div>
+                            <div class="table_cell"><p class="table_row-text hide-mobile-landscape">2h</p></div>
+                            <div class="table_cell"><p class="table_row-text">From $200</p></div>
+                          </div>
+                          <div class="table_row-hover-overlay"></div>
+                        </div>
+
+                        <div class="table_row">
+                          <div class="table_row-inner">
+                            <div class="table_cell-wide">
+                              <div class="table_row-head">Haircut (Julian)</div>
+                              <p class="table_row-text is-desktop">Clean fade, taper, or classic cut — tailored to you.</p>
+                            </div>
+                            <div class="table_cell"><p class="table_row-text hide-mobile-landscape">1h</p></div>
+                            <div class="table_cell"><p class="table_row-text">From $80</p></div>
+                          </div>
+                          <div class="table_row-hover-overlay"></div>
+                        </div>
+
+                        <div class="table_row">
+                          <div class="table_row-inner">
+                            <div class="table_cell-wide">
+                              <div class="table_row-head">Beard Only (Julian)</div>
+                              <p class="table_row-text is-desktop">Shape, trim, line-up, and finish.</p>
+                            </div>
+                            <div class="table_cell"><p class="table_row-text hide-mobile-landscape">30m</p></div>
+                            <div class="table_cell"><p class="table_row-text">From $40</p></div>
+                          </div>
+                          <div class="table_row-hover-overlay"></div>
+                        </div>
+
+                        <div class="table_row">
+                          <div class="table_row-inner">
+                            <div class="table_cell-wide">
+                              <div class="table_row-head">Beard Trim</div>
+                              <p class="table_row-text is-desktop">Quick cleanup for a sharper look.</p>
+                            </div>
+                            <div class="table_cell"><p class="table_row-text hide-mobile-landscape">30m</p></div>
+                            <div class="table_cell"><p class="table_row-text">From $30</p></div>
+                          </div>
+                          <div class="table_row-hover-overlay"></div>
+                        </div>
+
+                        <div class="table_row">
+                          <div class="table_row-inner">
+                            <div class="table_cell-wide">
+                              <div class="table_row-head">Maintenance Cut</div>
+                              <p class="table_row-text is-desktop">Light cleanup between full cuts.</p>
+                            </div>
+                            <div class="table_cell"><p class="table_row-text hide-mobile-landscape">1h</p></div>
+                            <div class="table_cell"><p class="table_row-text">$50</p></div>
+                          </div>
+                          <div class="table_row-hover-overlay"></div>
+                        </div>
+
+                        <div style="margin-top:24px;text-align:center;">
+                          <a href="https://silver-lining-barber.square.site/" class="button w-inline-block"><div>Book a Time</div></a>
+                        </div>
+                      </div>
+
+                      <!-- MOBILE CARD GRID -->
+                      <div class="sl-pricing-mobile" aria-label="Pricing cards">
+                        <div class="sl-price-card">
+                          <div class="sl-price-top">
+                            <div class="sl-price-name">Haircut + Beard</div>
+                            <div class="sl-price-pill">From $100</div>
+                          </div>
+                          <div class="sl-price-meta">Julian • 1h</div>
+                        </div>
+
+                        <div class="sl-price-card">
+                          <div class="sl-price-top">
+                            <div class="sl-price-name">Exclusive Session</div>
+                            <div class="sl-price-pill">From $200</div>
+                          </div>
+                          <div class="sl-price-meta">Julian • 2h</div>
+                        </div>
+
+                        <div class="sl-price-card">
+                          <div class="sl-price-top">
+                            <div class="sl-price-name">Haircut</div>
+                            <div class="sl-price-pill">From $80</div>
+                          </div>
+                          <div class="sl-price-meta">Julian • 1h</div>
+                        </div>
+
+                        <div class="sl-price-card">
+                          <div class="sl-price-top">
+                            <div class="sl-price-name">Beard Only</div>
+                            <div class="sl-price-pill">From $40</div>
+                          </div>
+                          <div class="sl-price-meta">Julian • 30m</div>
+                        </div>
+
+                        <div class="sl-price-card">
+                          <div class="sl-price-top">
+                            <div class="sl-price-name">Beard Trim</div>
+                            <div class="sl-price-pill">From $30</div>
+                          </div>
+                          <div class="sl-price-meta">30m</div>
+                        </div>
+
+                        <div class="sl-price-card">
+                          <div class="sl-price-top">
+                            <div class="sl-price-name">Maintenance Cut</div>
+                            <div class="sl-price-pill">$50</div>
+                          </div>
+                          <div class="sl-price-meta">1h</div>
+                        </div>
+
+                        <div class="sl-price-cta">
+                          <a href="https://silver-lining-barber.square.site/" class="button w-inline-block"><div>Book a Time</div></a>
+                        </div>
+                      </div>
+
+                    </div><!-- /.table_body -->
+                  </div><!-- /.table_component -->
+                </div><!-- /.services_tabs-wrap -->
+              </div><!-- /.services_inner -->
+            </div>
+          </div>
         </div>
-        <div class="table_cell"><p class="table_row-text hide-mobile-landscape">1h</p></div>
-        <div class="table_cell"><p class="table_row-text">From $100</p></div>
-      </div>
-      <div class="table_row-hover-overlay"></div>
-    </div>
-
-    <div class="table_row">
-      <div class="table_row-inner">
-        <div class="table_cell-wide">
-          <div class="table_row-head">Silver Lining Exclusive (Julian)</div>
-          <p class="table_row-text is-desktop">Full premium session — haircut + grooming details.</p>
-        </div>
-        <div class="table_cell"><p class="table_row-text hide-mobile-landscape">2h</p></div>
-        <div class="table_cell"><p class="table_row-text">From $200</p></div>
-      </div>
-      <div class="table_row-hover-overlay"></div>
-    </div>
-
-    <div class="table_row">
-      <div class="table_row-inner">
-        <div class="table_cell-wide">
-          <div class="table_row-head">Haircut (Julian)</div>
-          <p class="table_row-text is-desktop">Clean fade, taper, or classic cut — tailored to you.</p>
-        </div>
-        <div class="table_cell"><p class="table_row-text hide-mobile-landscape">1h</p></div>
-        <div class="table_cell"><p class="table_row-text">From $80</p></div>
-      </div>
-      <div class="table_row-hover-overlay"></div>
-    </div>
-
-    <div class="table_row">
-      <div class="table_row-inner">
-        <div class="table_cell-wide">
-          <div class="table_row-head">Beard Only (Julian)</div>
-          <p class="table_row-text is-desktop">Shape, trim, line-up, and finish.</p>
-        </div>
-        <div class="table_cell"><p class="table_row-text hide-mobile-landscape">30m</p></div>
-        <div class="table_cell"><p class="table_row-text">From $40</p></div>
-      </div>
-      <div class="table_row-hover-overlay"></div>
-    </div>
-
-    <div class="table_row">
-      <div class="table_row-inner">
-        <div class="table_cell-wide">
-          <div class="table_row-head">Beard Trim</div>
-          <p class="table_row-text is-desktop">Quick cleanup for a sharper look.</p>
-        </div>
-        <div class="table_cell"><p class="table_row-text hide-mobile-landscape">30m</p></div>
-        <div class="table_cell"><p class="table_row-text">From $30</p></div>
-      </div>
-      <div class="table_row-hover-overlay"></div>
-    </div>
-
-    <div class="table_row">
-      <div class="table_row-inner">
-        <div class="table_cell-wide">
-          <div class="table_row-head">Maintenance Cut</div>
-          <p class="table_row-text is-desktop">Light cleanup between full cuts.</p>
-        </div>
-        <div class="table_cell"><p class="table_row-text hide-mobile-landscape">1h</p></div>
-        <div class="table_cell"><p class="table_row-text">$50</p></div>
-      </div>
-      <div class="table_row-hover-overlay"></div>
-    </div>
-
-    <div style="margin-top:24px;text-align:center;">
-      <a href="https://silver-lining-barber.square.site/" class="button w-inline-block"><div>Book a Time</div></a>
-    </div>
-  </div>
-
-  <!-- MOBILE CARD GRID (new) -->
-  <div class="sl-pricing-mobile" aria-label="Pricing cards">
-    <div class="sl-price-card">
-      <div class="sl-price-top">
-        <div class="sl-price-name">Haircut + Beard</div>
-        <div class="sl-price-pill">From $100</div>
-      </div>
-      <div class="sl-price-meta">Julian • 1h</div>
-    </div>
-
-    <div class="sl-price-card">
-      <div class="sl-price-top">
-        <div class="sl-price-name">Exclusive Session</div>
-        <div class="sl-price-pill">From $200</div>
-      </div>
-      <div class="sl-price-meta">Julian • 2h</div>
-    </div>
-
-    <div class="sl-price-card">
-      <div class="sl-price-top">
-        <div class="sl-price-name">Haircut</div>
-        <div class="sl-price-pill">From $80</div>
-      </div>
-      <div class="sl-price-meta">Julian • 1h</div>
-    </div>
-
-    <div class="sl-price-card">
-      <div class="sl-price-top">
-        <div class="sl-price-name">Beard Only</div>
-        <div class="sl-price-pill">From $40</div>
-      </div>
-      <div class="sl-price-meta">Julian • 30m</div>
-    </div>
-
-    <div class="sl-price-card">
-      <div class="sl-price-top">
-        <div class="sl-price-name">Beard Trim</div>
-        <div class="sl-price-pill">From $30</div>
-      </div>
-      <div class="sl-price-meta">30m</div>
-    </div>
-
-    <div class="sl-price-card">
-      <div class="sl-price-top">
-        <div class="sl-price-name">Maintenance Cut</div>
-        <div class="sl-price-pill">$50</div>
-      </div>
-      <div class="sl-price-meta">1h</div>
-    </div>
-
-    <div class="sl-price-cta">
-      <a href="https://silver-lining-barber.square.site/" class="button w-inline-block"><div>Book a Time</div></a>
-    </div>
-  </div>
-
-</div>
-
+      </section>
 
       <!-- SKIN CARE (Sister Brand) -->
       <section id="skincare" style="margin-top:0;">
@@ -814,13 +751,14 @@
                       display:inline-block;
                       padding:6px 10px;
                       border-radius:999px;
-                      border:1px solid rgba(0,0,0,0.16);
+                      border:1px solid rgba(255,255,255,0.16);
                       font-weight:700;
                       font-size:12px;
                       letter-spacing:.08em;
                       text-transform:uppercase;
-                      opacity:.9;
-                      color: var(--sl-text);
+                      opacity:.95;
+                      color: rgba(243,244,246,0.92);
+                      background: rgba(255,255,255,0.06);
                     ">Also inside Silver Lining</div>
 
                     <h2 style="margin:12px 0 8px 0;">Skin Care & Facials</h2>
@@ -846,13 +784,13 @@
 
                   <div class="sl-card" style="
                     padding:18px;
-                    background: rgba(255,255,255,0.85) !important;
-                    border: 1px solid rgba(0,0,0,0.12) !important;
+                    background: rgba(255,255,255,0.04) !important;
+                    border: 1px solid rgba(255,255,255,0.12) !important;
                     border-radius:16px;
                     box-shadow: none !important;
                   ">
                     <div style="font-weight:800; font-size:16px; margin-bottom:8px; color:var(--sl-text);">Skin by Nids</div>
-                    <div style="opacity:.85; line-height:1.65; color:var(--sl-muted);">
+                    <div style="opacity:.86; line-height:1.65; color:var(--sl-muted);">
                       Professional facials + skincare treatments<br/>
                       Book online in minutes
                     </div>
@@ -864,7 +802,7 @@
                         gap:8px;
                         font-weight:700;
                         text-decoration:none;
-                        color: var(--sl-text);
+                        color: rgba(243,244,246,0.92);
                       ">
                         Visit Skin by Nids →
                       </a>
@@ -878,75 +816,6 @@
           </div>
         </div>
       </section>
-
-      <!-- FAQ -->
-      <section id="faq">
-        <div class="padding-global">
-          <div class="container-large">
-            <div class="padding-section-large">
-              <div class="faq8_component">
-                <div class="w-layout-grid faq8_content">
-                  <div class="faq8_content-left">
-                    <div class="margin-bottom margin-small"><h2>Questions? We’ve Got Answers</h2></div>
-                    <p>Quick answers about bookings, payments, cancellations, and what to expect.</p>
-                    <div class="margin-top margin-medium">
-                      <a href="https://silver-lining-barber.square.site/" class="button is-outlined w-inline-block"><div>Book now</div></a>
-                    </div>
-                  </div>
-
-                  <div class="faq8_list">
-                    <div class="faq8_item">
-                      <div class="margin-bottom margin-xsmall"><div class="faq-question">Do I need to book in advance?</div></div>
-                      <p class="faq-answer">Yes — evenings and weekends book up fast. Booking ahead guarantees your slot.</p>
-                    </div>
-
-                    <div class="faq8_item">
-                      <div class="margin-bottom margin-xsmall"><div class="faq-question">What’s your cancellation policy?</div></div>
-                      <p class="faq-answer">Please give at least 24 hours’ notice to cancel or reschedule. Late cancellations/no-shows may be subject to a fee.</p>
-                    </div>
-
-                    <div class="faq8_item">
-                      <div class="margin-bottom margin-xsmall"><div class="faq-question">What forms of payment do you accept?</div></div>
-                      <p class="faq-answer">Credit/debit, Apple Pay, and cash.</p>
-                    </div>
-
-                    <div class="faq8_item">
-                      <div class="margin-bottom margin-xsmall"><div class="faq-question">Do you cut long or medium-length hair?</div></div>
-                      <p class="faq-answer">Absolutely — we do scissor work and longer styles with clean shaping and structure.</p>
-                    </div>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- VIDEO -->
-      <header class="section-video">
-        <div class="padding-global">
-          <div class="container-large">
-            <div class="padding-section-large">
-              <div class="video-section w-embed w-script">
-                <script src="https://fast.wistia.com/player.js" async></script>
-                <script src="https://fast.wistia.com/embed/zcjxo4e8b6.js" async type="module"></script>
-                <style>
-                  wistia-player[media-id='zcjxo4e8b6']:not(:defined) {
-                    background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/zcjxo4e8b6/swatch');
-                    display: block;
-                    filter: blur(5px);
-                    padding-top:56.25%;
-                    border-radius:16px;
-                    overflow:hidden;
-                  }
-                </style>
-                <wistia-player media-id="zcjxo4e8b6" aspect="1.7777777777777777"></wistia-player>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
 
       <!-- LOCATION / CONTACT -->
       <section id="contact">
@@ -994,7 +863,7 @@
       </section>
 
       <!-- FOOTER -->
-      <footer style="margin-top:24px;border-top:1px solid rgba(0,0,0,0.10);">
+      <footer style="margin-top:24px;border-top:1px solid rgba(255,255,255,0.10);">
         <div class="padding-global">
           <div class="container-large">
             <div style="padding:32px 0;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:24px;">
@@ -1029,7 +898,7 @@
               </div>
             </div>
 
-            <div style="padding:18px 0;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;opacity:.75;">
+            <div style="padding:18px 0;display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;opacity:.80;color:var(--sl-muted);">
               <div>© <span id="year"></span> Silver Lining Barbershop. All rights reserved.</div>
               <div style="display:flex;gap:10px;flex-wrap:wrap;">
                 <a href="#contact">Directions</a>
@@ -1045,7 +914,7 @@
 
   <!-- Mobile CTA bar -->
   <style>
-    .mobile-cta {
+    .mobile-cta{
       position: fixed;
       left: 16px;
       right: 16px;
@@ -1055,32 +924,32 @@
       gap: 10px;
       padding: 10px;
       border-radius: 16px;
-      background: rgba(255,255,255,0.94);
-      border: 1px solid rgba(0,0,0,0.12);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.10);
+      background: rgba(26,26,28,0.92);
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: 0 16px 50px rgba(0,0,0,0.65);
       backdrop-filter: blur(10px);
     }
-    .mobile-cta a {
+    .mobile-cta a{
       flex: 1;
       text-align: center;
       padding: 12px 14px;
       border-radius: 12px;
-      font-weight: 700;
+      font-weight: 800;
       text-decoration: none;
       font-size: 14px;
       line-height: 1.1;
     }
-    .mobile-cta .cta-book {
-      background: #0f0f0f;
-      color: #fff;
+    .mobile-cta .cta-book{
+      background: #f3f4f6;
+      color: #0f0f10 !important;
     }
-    .mobile-cta .cta-directions {
-      border: 1px solid rgba(0,0,0,0.25);
-      color: #0f0f0f;
+    .mobile-cta .cta-directions{
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #f3f4f6 !important;
       background: transparent;
     }
-    @media (max-width: 767px) {
-      .mobile-cta { display: flex; }
+    @media (max-width: 767px){
+      .mobile-cta{ display: flex; }
     }
   </style>
 
@@ -1122,73 +991,46 @@
     });
   </script>
 
-  <!-- ✅ CTA BUTTON STYLE (MONOCHROME VERSION) -->
+  <!-- ✅ CTA BUTTON STYLE (DARK THEME) -->
   <style>
     .button,
-    .w-button {
+    .w-button{
       border-radius: 999px !important;
       padding: 14px 26px !important;
       font-weight: 800 !important;
       letter-spacing: 0.2px;
 
-      background: linear-gradient(
-        135deg,
-        #0f0f0f 0%,
-        #2a2a2a 45%,
-        #0f0f0f 100%
-      ) !important;
-
-      color: #fff !important;
+      background: linear-gradient(135deg,#f3f4f6 0%,#cfcfd4 45%,#f3f4f6 100%) !important;
+      color: #0f0f10 !important;
       border: none !important;
 
-      transition:
-        transform 0.18s ease,
-        box-shadow 0.18s ease,
-        background-position 0.4s ease;
-
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background-position 0.4s ease;
       background-size: 200% 200%;
       background-position: 0% 50%;
-
-      box-shadow:
-        0 10px 25px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.55) !important;
     }
 
     .button:hover,
-    .w-button:hover {
+    .w-button:hover{
       transform: translateY(-2px);
-      box-shadow:
-        0 14px 35px rgba(0, 0, 0, 0.45);
+      box-shadow: 0 18px 55px rgba(0,0,0,0.65) !important;
     }
 
     .button:active,
-    .w-button:active {
+    .w-button:active{
       transform: translateY(0);
-      box-shadow:
-        0 8px 18px rgba(0, 0, 0, 0.30);
+      box-shadow: 0 10px 28px rgba(0,0,0,0.55) !important;
     }
 
-    .button.is-outlined {
+    .button.is-outlined{
       border-radius: 999px !important;
       padding: 14px 26px !important;
       font-weight: 800 !important;
       background: transparent !important;
-      border: 1.5px solid rgba(0,0,0,0.25) !important;
-      color: #0f0f0f !important;
+      border: 1.5px solid rgba(255,255,255,0.22) !important;
+      color: #f3f4f6 !important;
       box-shadow: none !important;
     }
   </style>
-
-  <style>
-  /* Force mobile CTA Book button text to white */
-  .mobile-cta .cta-book{
-    color: #ffffff !important;
-  }
-
-  .mobile-cta .cta-book:hover,
-  .mobile-cta .cta-book:active,
-  .mobile-cta .cta-book:visited{
-    color: #ffffff !important;
-  }
-</style>
 </body>
 </html>
